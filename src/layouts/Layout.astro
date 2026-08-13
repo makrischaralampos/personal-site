@@ -1,0 +1,71 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Background from "../components/Background.astro";
+
+interface Props {
+    title: string;
+    description?: string;
+}
+
+const {
+    title,
+    description = "Charalampos Makris — full-stack dev, indie game maker in progress.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description} />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{title} · Chari</title>
+    </head>
+    <body>
+        <a href="#main-content" class="skip-link">Skip to content</a>
+        <Background />
+        <div class="page-shell">
+            <Header />
+            <main id="main-content">
+                <slot />
+            </main>
+            <Footer />
+        </div>
+    </body>
+</html>
+
+<style>
+    .page-shell {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1;
+        padding: var(--space-8) var(--space-6);
+        max-width: 960px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        z-index: 100;
+        background: var(--color-accent);
+        color: var(--color-bg0);
+        padding: var(--space-2) var(--space-4);
+    }
+
+    .skip-link:focus {
+        left: var(--space-4);
+        top: var(--space-4);
+    }
+</style>
