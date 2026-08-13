@@ -1,0 +1,70 @@
+---
+interface Props {
+    label: string;
+    value: number; // 0–100
+    flavor?: string;
+}
+
+const { label, value, flavor } = Astro.props;
+---
+
+<div class="stat">
+    <div class="stat-label-row">
+        <span class="stat-label">{label}</span>
+        <span class="stat-value">{value}</span>
+    </div>
+    <div
+        class="stat-bar"
+        role="progressbar"
+        aria-label={label}
+        aria-valuenow={value}
+        aria-valuemin="0"
+        aria-valuemax="100"
+    >
+        <div class="stat-bar-fill" style={`width: ${value}%`}></div>
+    </div>
+    {flavor && <p class="stat-flavor">{flavor}</p>}
+</div>
+
+<style>
+    .stat {
+        margin-bottom: var(--space-4);
+    }
+
+    .stat-label-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--space-1);
+    }
+
+    .stat-label {
+        color: var(--color-text);
+    }
+
+    .stat-value {
+        color: var(--color-accent);
+        font-family: var(--font-display);
+        font-size: var(--font-size-xs);
+    }
+
+    .stat-bar {
+        height: 10px;
+        background: var(--color-bg2);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        overflow: hidden;
+    }
+
+    .stat-bar-fill {
+        height: 100%;
+        background: var(--color-accent);
+        transition: width 600ms ease;
+    }
+
+    .stat-flavor {
+        font-size: var(--font-size-xs);
+        color: var(--color-text-muted);
+        margin: var(--space-1) 0 0;
+    }
+</style>
