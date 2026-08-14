@@ -1,0 +1,8 @@
+{
+  "title": "Charon's Toll",
+  "status": "Completed",
+  "summary": "A self-hosted cloud-save and leaderboard service for indie games — pay your fare, cross the river, sync your progress.",
+  "stack": ["Rust", "Axum", "PostgreSQL"],
+  "githubUrl": "https://github.com/makrischaralampos/charons-toll",
+  "order": 5
+}

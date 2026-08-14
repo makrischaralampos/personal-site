@@ -1,0 +1,15 @@
+{
+  "title": "The Forge",
+  "status": "Completed",
+  "summary": "A dashboard for Godot export pipelines — builds, deploys, and monitors, running self-hosted via Docker Compose.",
+  "stack": [
+    "Python",
+    "FastAPI",
+    "Docker Compose",
+    "Traefik",
+    "Prometheus",
+    "Grafana"
+  ],
+  "githubUrl": "https://github.com/makrischaralampos/the-forge",
+  "order": 4
+}

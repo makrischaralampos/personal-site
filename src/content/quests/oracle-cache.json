@@ -1,0 +1,8 @@
+{
+  "title": "Oracle Cache",
+  "status": "Completed",
+  "summary": "A self-hosted API caching layer with rate limiting, built to sit in front of any upstream API and cut redundant calls.",
+  "stack": ["Java 25", "Spring Boot 4.1", "PostgreSQL 18", "Flyway"],
+  "githubUrl": "https://github.com/makrischaralampos/oracle-cache",
+  "order": 1
+}

@@ -1,0 +1,8 @@
+{
+  "title": "Guildboard",
+  "status": "Completed",
+  "summary": "An RPG-styled quest-log task manager — because a to-do list is more fun when it's framed as a guild board.",
+  "stack": ["Angular 21", "Signals", "localStorage"],
+  "githubUrl": "https://github.com/makrischaralampos/guildboard",
+  "order": 3
+}
