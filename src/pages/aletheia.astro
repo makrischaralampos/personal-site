@@ -1,0 +1,276 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const features = [
+    {
+        title: "Deduction, not combat",
+        body: "No fighting, no failure states — you piece together what happened from evidence, in the spirit of The Case of the Golden Idol.",
+    },
+    {
+        title: "2,400 years, 8 scenes",
+        body: "A single mystery threaded through eight moments in Greek history, from antiquity to the near-present.",
+    },
+    {
+        title: "Five families, one language",
+        body: "Five bloodlines evolve across every era — their names, their words, their secrets drifting with the centuries.",
+    },
+    {
+        title: "Five endings",
+        body: "What you conclude in the synthesis at the end of each era determines which of five endings you're building toward.",
+    },
+];
+
+const eras = [
+    {
+        name: "Archaic Greece",
+        colors: ["#fb4934", "#fabd2f", "#282828", "#ebdbb2"],
+    },
+    {
+        name: "Classical Athens",
+        colors: ["#83a598", "#8ec07c", "#3c3836", "#fbf1c7"],
+    },
+    {
+        name: "Hellenistic Era",
+        colors: ["#d3869b", "#fe8019", "#3c3836", "#d5c4a1"],
+    },
+    {
+        name: "Roman Greece",
+        colors: ["#928374", "#fb4934", "#282828", "#bdae93"],
+    },
+    {
+        name: "Byzantine Period",
+        colors: ["#fabd2f", "#83a598", "#3c3836", "#fbf1c7"],
+    },
+    {
+        name: "Ottoman Rule",
+        colors: ["#8ec07c", "#d3869b", "#282828", "#d5c4a1"],
+    },
+    {
+        name: "Modern Greece",
+        colors: ["#fe8019", "#928374", "#3c3836", "#ebdbb2"],
+    },
+    {
+        name: "Near-Present",
+        colors: ["#fb4934", "#8ec07c", "#282828", "#fbf1c7"],
+    },
+];
+---
+
+<Layout
+    title="Aletheia"
+    description="Aletheia — a deduction mystery game spanning 2,400 years of Greek history, built solo in Godot 4."
+>
+    <section class="hero">
+        <p class="eyebrow">MAIN QUEST</p>
+        <h1>Aletheia</h1>
+        <span class="status-badge">In Development</span>
+        <p class="logline">
+            A secret continuation of the Eleusinian Mysteries, traces across
+            2,400 years of Greek history through the eyes of five families whose
+            fates keep circling back to each other. You don't fight your way
+            through it — you read the evidence, and decide what's true.
+        </p>
+        <div class="cta-row">
+            <a class="btn btn-primary" href="/chronicle">Follow the Devlog</a>
+            <a
+                class="btn btn-secondary"
+                href="https://github.com/makrischaralampos"
+                rel="noopener noreferrer"
+                target="_blank"
+            >
+                GitHub
+            </a>
+        </div>
+    </section>
+
+    <section class="features" aria-labelledby="features-heading">
+        <h2 id="features-heading">What it is</h2>
+        <div class="features-grid">
+            {
+                features.map((f) => (
+                    <div class="feature-card">
+                        <h3>{f.title}</h3>
+                        <p>{f.body}</p>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+
+    <section class="eras" aria-labelledby="eras-heading">
+        <h2 id="eras-heading">Eight eras, four colors each</h2>
+        <p class="eras-intro">
+            Every era gets its own four-color palette — a visual language that
+            shifts as the centuries do, even as the same families reappear
+            inside it.
+        </p>
+        <ol class="eras-list">
+            {
+                eras.map((era) => (
+                    <li class="era-item">
+                        <div class="era-swatches" aria-hidden="true">
+                            {era.colors.map((c) => (
+                                <span
+                                    class="swatch"
+                                    style={`background:${c}`}
+                                />
+                            ))}
+                        </div>
+                        <span class="era-name">{era.name}</span>
+                    </li>
+                ))
+            }
+        </ol>
+    </section>
+</Layout>
+
+<style>
+    .hero {
+        padding: var(--space-12) 0 var(--space-8);
+        max-width: 65ch;
+    }
+
+    .eyebrow {
+        font-family: var(--font-display);
+        font-size: var(--font-size-xs);
+        color: var(--color-accent);
+        letter-spacing: 0.1em;
+        margin: 0 0 var(--space-4);
+    }
+
+    h1 {
+        font-size: var(--font-size-2xl);
+        color: var(--color-fg0);
+        margin: 0 0 var(--space-4);
+    }
+
+    .status-badge {
+        display: inline-block;
+        font-size: var(--font-size-xs);
+        padding: var(--space-1) var(--space-3);
+        border-radius: var(--radius);
+        background: color-mix(in srgb, var(--color-yellow), 20%, transparent);
+        color: var(--color-yellow);
+        margin-bottom: var(--space-6);
+    }
+
+    .logline {
+        color: var(--color-text);
+        font-size: var(--font-size-lg);
+        line-height: 1.6;
+        margin: 0 0 var(--space-8);
+    }
+
+    .cta-row {
+        display: flex;
+        gap: var(--space-4);
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: var(--space-3) var(--space-6);
+        font-size: var(--font-size-sm);
+        text-decoration: none;
+        border-radius: var(--radius);
+        transition: transform var(--transition);
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .btn-primary {
+        background: var(--color-accent);
+        color: var(--color-bg0);
+    }
+
+    .btn-secondary {
+        background: transparent;
+        color: var(--color-text);
+        border: 1px solid var(--color-border);
+    }
+
+    .features,
+    .eras {
+        padding: var(--space-8) 0;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .features h2,
+    .eras h2 {
+        font-size: var(--font-size-lg);
+        color: var(--color-fg0);
+        margin: 0 0 var(--space-6);
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--space-6);
+    }
+
+    .feature-card {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        padding: var(--space-6);
+    }
+
+    .feature-card h3 {
+        font-family: var(--font-display);
+        font-size: var(--font-size-xs);
+        color: var(--color-fg0);
+        margin: 0 0 var(--space-3);
+    }
+
+    .feature-card p {
+        color: var(--color-text-muted);
+        font-size: var(--font-size-sm);
+        margin: 0;
+    }
+
+    .eras-intro {
+        color: var(--color-text-muted);
+        max-width: 60ch;
+        margin: 0 0 var(--space-6);
+    }
+
+    .eras-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-6);
+    }
+
+    .era-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-2);
+    }
+
+    .era-swatches {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius);
+        overflow: hidden;
+        border: 1px solid var(--color-border);
+    }
+
+    .swatch {
+        width: 100%;
+        height: 100%;
+    }
+
+    .era-name {
+        font-size: var(--font-size-xs);
+        color: var(--color-text-muted);
+        text-align: center;
+        max-width: 90px;
+    }
+</style>
