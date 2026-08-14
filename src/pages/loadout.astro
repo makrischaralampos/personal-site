@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+---
+
+<Layout
+    title="Loadout"
+    description="The hardware, OS, and tools this character carries."
+>
+    <PageHeader
+        eyebrow="inventory"
+        title="Loadout"
+        subtitle="The gear this build runs on."
+    />
+
+    <div class="prose">
+        <h2>Hardware</h2>
+        <ul>
+            <li>HP Victus — Ryzen 7 7445HS, RTX 4050</li>
+        </ul>
+
+        <h2>OS &amp; Shell</h2>
+        <ul>
+            <li>Pop!_OS 24.04 LTS (COSMIC desktop)</li>
+            <li>Fish shell + Starship prompt</li>
+            <li>Ghostty terminal, Gruvbox Dark theme, Lilex font</li>
+        </ul>
+
+        <h2>Editor</h2>
+        <ul>
+            <li>Zed</li>
+        </ul>
+
+        <h2>Stack, day job</h2>
+        <ul>
+            <li>
+                Angular, Java/Quarkus, PostgreSQL, Keycloak, Temporal, Docker
+            </li>
+        </ul>
+
+        <h2>Stack, this site</h2>
+        <ul>
+            <li>
+                Astro, hand-written CSS, self-hosted pixel fonts, zero trackers
+            </li>
+        </ul>
+
+        <h2>Stack, game dev</h2>
+        <ul>
+            <li>Godot 4</li>
+        </ul>
+    </div>
+</Layout>

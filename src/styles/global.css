@@ -38,3 +38,32 @@ button:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
 }
+
+.prose {
+    max-width: 65ch;
+}
+
+.prose h2 {
+    font-size: var(--font-size-lg);
+    color: var(--color-fg0);
+    margin: var(--space-8) 0 var(--space-3);
+}
+
+.prose p {
+    color: var(--color-text);
+    margin: 0 0 var(--space-4);
+}
+
+.prose ul {
+    color: var(--color-text);
+    padding-left: var(--space-6);
+    margin: 0 0 var(--space-4);
+}
+
+.prose li {
+    margin-bottom: var(--space-2);
+}
+
+.prose strong {
+    color: var(--color-fg0);
+}
