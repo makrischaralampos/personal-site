@@ -14,4 +14,15 @@ const quests = defineCollection({
   }),
 });
 
-export const collections = { quests };
+const chronicle = defineCollection({
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/chronicle" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { quests, chronicle };
