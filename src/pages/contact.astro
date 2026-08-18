@@ -1,0 +1,71 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+
+const links = [
+    {
+        label: "Email",
+        value: "chari@example.com",
+        href: "mailto:chari@example.com",
+    },
+    {
+        label: "GitHub",
+        value: "@makrischaralampos",
+        href: "https://github.com/makrischaralampos",
+    },
+];
+---
+
+<Layout title="Contact" description="Get in touch — no forms, no funnels.">
+    <PageHeader
+        eyebrow="SEND A MESSAGE"
+        title="Contact"
+        subtitle="No contact form, no CRM funnel — just a direct line."
+    />
+
+    <ul class="contact-list">
+        {
+            links.map((link) => (
+                <li>
+                    <span class="label">{link.label}</span>
+                    <a
+                        href={link.href}
+                        rel="me noopener noreferrer"
+                        target={
+                            link.href.startsWith("http") ? "_blank" : undefined
+                        }
+                    >
+                        {link.value}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</Layout>
+
+<style>
+    .contact-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-width: 40ch;
+    }
+
+    .contact-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--space-4) 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .label {
+        font-family: var(--font-display);
+        font-size: var(--font-size-xs);
+        color: var(--color-text-muted);
+    }
+
+    .contact-list a {
+        font-size: var(--font-size-sm);
+    }
+</style>
