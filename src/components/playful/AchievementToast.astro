@@ -1,0 +1,95 @@
+<div id="achievement-region" aria-live="polite" class="achievement-region">
+</div>
+
+<style>
+    .achievement-region {
+        position: fixed;
+        top: var(--space-6);
+        right: var(--space-6);
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    .achievement-toast {
+        background: var(--color-surface);
+        border: 1px solid var(--color-accent);
+        border-radius: var(--radius);
+        padding: var(--space-3) var(--space-4);
+        max-width: 280px;
+        animation: slide-in 300ms ease-out;
+    }
+
+    .achievement-toast .label {
+        font-family: var(--font-display);
+        font-size: var(--font-size-xs);
+        color: var(--color-accent);
+        display: block;
+        margin-bottom: var(--space-1);
+    }
+
+    .achievement-toast .title {
+        font-size: var(--font-size-sm);
+        color: var(--color-fg0);
+        margin: 0;
+    }
+
+    @keyframes slide-in {
+        from {
+            transform: translateX(20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .achievement-toast {
+            animation: none;
+        }
+    }
+</style>
+
+<script>
+    declare global {
+        interface Window {
+            playBlip?: (freq?: number, duration?: number) => void;
+            unlockAchievement?: (id: string, title: string) => void;
+        }
+    }
+
+    const STORAGE_KEY = "unlocked-achievements";
+
+    function getUnlocked(): string[] {
+        try {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+        } catch {
+            return [];
+        }
+    }
+
+    function unlockAchievement(id: string, title: string) {
+        const unlocked = getUnlocked();
+        if (unlocked.includes(id)) return; // already earned, never re-fire
+
+        unlocked.push(id);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(unlocked));
+
+        const region = document.getElementById("achievement-region");
+        if (!region) return;
+
+        const toast = document.createElement("div");
+        toast.className = "achievement-toast";
+        toast.innerHTML = `<span class="label">ACHIEVEMENT UNLOCKED</span><p class="title">${title}</p>`;
+        region.appendChild(toast);
+
+        window.playBlip?.(880, 0.1);
+
+        setTimeout(() => toast.remove(), 5000);
+    }
+
+    window.unlockAchievement = unlockAchievement;
+</script>

@@ -1,0 +1,85 @@
+<button
+    type="button"
+    id="sound-toggle"
+    class="sound-toggle"
+    aria-pressed="false"
+    aria-label="Toggle interface sound effects"
+>
+    <span id="sound-icon" aria-hidden="true">🔇</span>
+</button>
+
+<style>
+    .sound-toggle {
+        background: none;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        color: var(--color-text-muted);
+        cursor: pointer;
+        padding: var(--space-1) var(--space-2);
+        font-size: var(--font-size-sm);
+        line-height: 1;
+    }
+
+    .sound-toggle[aria-pressed="true"] {
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+    }
+</style>
+
+<script>
+    declare global {
+        interface Window {
+            playBlip?: (freq?: number, duration?: number) => void;
+        }
+    }
+
+    const STORAGE_KEY = "sound-enabled";
+    const toggle = document.getElementById("sound-toggle");
+    const icon = document.getElementById("sound-icon");
+
+    if (toggle && icon) {
+        const toggleEl: HTMLElement = toggle;
+        const iconEl: HTMLElement = icon;
+
+        let audioContext: AudioContext | undefined;
+        let enabled = localStorage.getItem(STORAGE_KEY) === "true";
+
+        function render() {
+            toggleEl.setAttribute("aria-pressed", String(enabled));
+            iconEl.textContent = enabled ? "🔊" : "🔇";
+        }
+
+        function playBlip(freq = 440, duration = 0.06) {
+            if (!enabled) return;
+            audioContext ??= new AudioContext();
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            osc.type = "square";
+            osc.frequency.value = freq;
+            gain.gain.setValueAtTime(0.05, audioContext.currentTime);
+            gain.gain.exponentialRampToValueAtTime(
+                0.0001,
+                audioContext.currentTime + duration,
+            );
+            osc.connect(gain).connect(audioContext.destination);
+            osc.start();
+            osc.stop(audioContext.currentTime + duration);
+        }
+
+        // expose globally so other components (achievements, konami code) can reuse it
+        window.playBlip = playBlip;
+
+        toggleEl.addEventListener("click", () => {
+            enabled = !enabled;
+            localStorage.setItem(STORAGE_KEY, String(enabled));
+            render();
+            if (enabled) playBlip(660);
+        });
+
+        document.querySelectorAll("nav a, .btn").forEach((el) => {
+            el.addEventListener("click", () => playBlip(520, 0.04));
+        });
+
+        render();
+    }
+</script>
