@@ -1,134 +1,126 @@
 ---
 const lines = [
-    "Still building.",
-    "The Chronicle updates when I ship things.",
-    "Aletheia says hi.",
-    "Try the Konami code. I dare you.",
-    "No trackers here. Just me.",
+  "Still building.",
+  "The Chronicle updates when I ship things.",
+  "Aletheia says hi.",
+  "Try the Konami code. I dare you.",
+  "No trackers here. Just me.",
 ];
 ---
 
 <div class="sprite-wrapper" id="sprite-companion">
-    <button
-        type="button"
-        id="sprite-button"
-        aria-label="Say hello to the site's companion sprite"
-        aria-expanded="false"
+  <button
+    type="button"
+    id="sprite-button"
+    aria-label="Say hello to the site's companion sprite"
+    aria-expanded="false"
+  >
+    <svg
+      viewBox="0 0 16 16"
+      width="48"
+      height="48"
+      shape-rendering="crispEdges"
+      aria-hidden="true"
     >
-        <svg
-            viewBox="0 0 16 16"
-            width="48"
-            height="48"
-            shape-rendering="crispEdges"
-            aria-hidden="true"
-        >
-            <rect x="6" y="2" width="4" height="4" fill="var(--color-fg1)"
-            ></rect>
-            <rect x="7" y="3" width="1" height="1" fill="var(--color-bg0)"
-            ></rect>
-            <rect x="9" y="3" width="1" height="1" fill="var(--color-bg0)"
-            ></rect>
-            <rect x="5" y="6" width="6" height="5" fill="var(--color-accent)"
-            ></rect>
-            <rect x="3" y="7" width="2" height="3" fill="var(--color-fg2)"
-            ></rect>
-            <rect x="11" y="6" width="2" height="4" fill="var(--color-fg2)"
-            ></rect>
-            <rect
-                x="12"
-                y="3"
-                width="2"
-                height="3"
-                fill="var(--color-yellow)"
-                class="flame"></rect>
-            <rect x="5" y="11" width="2" height="3" fill="var(--color-bg3)"
-            ></rect>
-            <rect x="9" y="11" width="2" height="3" fill="var(--color-bg3)"
-            ></rect>
-        </svg>
-    </button>
-    <div class="speech-bubble" id="speech-bubble" role="status" hidden></div>
+      <rect x="6" y="2" width="4" height="4" fill="var(--color-fg1)"></rect>
+      <rect x="7" y="3" width="1" height="1" fill="var(--color-bg0)"></rect>
+      <rect x="9" y="3" width="1" height="1" fill="var(--color-bg0)"></rect>
+      <rect x="5" y="6" width="6" height="5" fill="var(--color-accent)"></rect>
+      <rect x="3" y="7" width="2" height="3" fill="var(--color-fg2)"></rect>
+      <rect x="11" y="6" width="2" height="4" fill="var(--color-fg2)"></rect>
+      <rect
+        x="12"
+        y="3"
+        width="2"
+        height="3"
+        fill="var(--color-yellow)"
+        class="flame"></rect>
+      <rect x="5" y="11" width="2" height="3" fill="var(--color-bg3)"></rect>
+      <rect x="9" y="11" width="2" height="3" fill="var(--color-bg3)"></rect>
+    </svg>
+  </button>
+  <div class="speech-bubble" id="speech-bubble" role="status" hidden></div>
 </div>
 
 <style>
-    .sprite-wrapper {
-        position: fixed;
-        bottom: var(--space-6);
-        right: var(--space-6);
-        z-index: 50;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: var(--space-2);
-    }
+  .sprite-wrapper {
+    position: fixed;
+    bottom: var(--space-6);
+    right: var(--space-6);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-2);
+  }
 
-    #sprite-button {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: var(--space-2);
-        animation: bob 2.4s ease-in-out infinite;
-    }
+  #sprite-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2);
+    animation: bob 2.4s ease-in-out infinite;
+  }
 
-    @keyframes bob {
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-4px);
-        }
+  @keyframes bob {
+    0%,
+    100% {
+      transform: translateY(0);
     }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
 
+  .flame {
+    animation: flicker 0.6s ease-in-out infinite alternate;
+    transform-origin: center;
+  }
+
+  @keyframes flicker {
+    from {
+      opacity: 0.7;
+      transform: scaleY(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scaleY(1.1);
+    }
+  }
+
+  .speech-bubble {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xs);
+    color: var(--color-text);
+    max-width: 200px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #sprite-button,
     .flame {
-        animation: flicker 0.6s ease-in-out infinite alternate;
-        transform-origin: center;
+      animation: none;
     }
-
-    @keyframes flicker {
-        from {
-            opacity: 0.7;
-            transform: scaleY(0.9);
-        }
-        to {
-            opacity: 1;
-            transform: scaleY(1.1);
-        }
-    }
-
-    .speech-bubble {
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius);
-        padding: var(--space-2) var(--space-3);
-        font-size: var(--font-size-xs);
-        color: var(--color-text);
-        max-width: 200px;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        #sprite-button,
-        .flame {
-            animation: none;
-        }
-    }
+  }
 </style>
 
 <script is:inline define:vars={{ lines }}>
-    const button = document.getElementById("sprite-button");
-    const bubble = document.getElementById("speech-bubble");
-    let hideTimeout;
+  const button = document.getElementById("sprite-button");
+  const bubble = document.getElementById("speech-bubble");
+  let hideTimeout;
 
-    button.addEventListener("click", () => {
-        const line = lines[Math.floor(Math.random() * lines.length)];
-        bubble.textContent = line;
-        bubble.hidden = false;
-        button.setAttribute("aria-expanded", "true");
+  button.addEventListener("click", () => {
+    const line = lines[Math.floor(Math.random() * lines.length)];
+    bubble.textContent = line;
+    bubble.hidden = false;
+    button.setAttribute("aria-expanded", "true");
 
-        clearTimeout(hideTimeout);
-        hideTimeout = setTimeout(() => {
-            bubble.hidden = true;
-            button.setAttribute("aria-expanded", "false");
-        }, 4000);
-    });
+    clearTimeout(hideTimeout);
+    hideTimeout = setTimeout(() => {
+      bubble.hidden = true;
+      button.setAttribute("aria-expanded", "false");
+    }, 4000);
+  });
 </script>

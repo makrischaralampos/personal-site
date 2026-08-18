@@ -1,53 +1,50 @@
 <script>
-    const KONAMI = [
-        "ArrowUp",
-        "ArrowUp",
-        "ArrowDown",
-        "ArrowDown",
-        "ArrowLeft",
-        "ArrowRight",
-        "ArrowLeft",
-        "ArrowRight",
-        "b",
-        "a",
-    ];
-    let progress = 0;
+  const KONAMI = [
+    "ArrowUp",
+    "ArrowUp",
+    "ArrowDown",
+    "ArrowDown",
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowLeft",
+    "ArrowRight",
+    "b",
+    "a",
+  ];
+  let progress = 0;
 
-    window.addEventListener("keydown", (e) => {
-        const expected = KONAMI[progress];
-        const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+  window.addEventListener("keydown", (e) => {
+    const expected = KONAMI[progress];
+    const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
 
-        if (key === expected) {
-            progress++;
-            if (progress === KONAMI.length) {
-                progress = 0;
-                document.body.classList.add("konami-active");
-                window.unlockAchievement?.("konami", "Old Habits Die Hard");
-                setTimeout(
-                    () => document.body.classList.remove("konami-active"),
-                    2000,
-                );
-            }
-        } else {
-            progress = key === KONAMI[0] ? 1 : 0;
-        }
-    });
+    if (key === expected) {
+      progress++;
+      if (progress === KONAMI.length) {
+        progress = 0;
+        document.body.classList.add("konami-active");
+        window.unlockAchievement?.("konami", "Old Habits Die Hard");
+        setTimeout(() => document.body.classList.remove("konami-active"), 2000);
+      }
+    } else {
+      progress = key === KONAMI[0] ? 1 : 0;
+    }
+  });
 </script>
 
 <style is:global>
-    @media (prefers-reduced-motion: no-preference) {
-        body.konami-active {
-            animation: konami-pulse 2s ease-in-out;
-        }
+  @media (prefers-reduced-motion: no-preference) {
+    body.konami-active {
+      animation: konami-pulse 2s ease-in-out;
     }
+  }
 
-    @keyframes konami-pulse {
-        0%,
-        100% {
-            filter: none;
-        }
-        50% {
-            filter: hue-rotate(180deg) saturate(1.5);
-        }
+  @keyframes konami-pulse {
+    0%,
+    100% {
+      filter: none;
     }
+    50% {
+      filter: hue-rotate(180deg) saturate(1.5);
+    }
+  }
 </style>

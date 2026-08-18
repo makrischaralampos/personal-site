@@ -3,138 +3,138 @@ import Layout from "../layouts/Layout.astro";
 import StatBlock from "../components/StatBlock.astro";
 
 const stats = [
-    {
-        label: "Backend Sorcery",
-        value: 75,
-        flavor: "Java/Quarkus, PostgreSQL – keeps the lights on.",
-    },
-    {
-        label: "Frontend Alchemy",
-        value: 65,
-        flavor: "Angular by day, Astro by night.",
-    },
-    {
-        label: "DevOps Resilience",
-        value: 60,
-        flavor: "Docker, Temporal, and a healthy fear of YAML.",
-    },
-    {
-        label: "Game Dev Ambition",
-        value: 40,
-        flavor: "Godot 4, rising fast. Ask about Aletheia.",
-    },
+  {
+    label: "Backend Sorcery",
+    value: 75,
+    flavor: "Java/Quarkus, PostgreSQL – keeps the lights on.",
+  },
+  {
+    label: "Frontend Alchemy",
+    value: 65,
+    flavor: "Angular by day, Astro by night.",
+  },
+  {
+    label: "DevOps Resilience",
+    value: 60,
+    flavor: "Docker, Temporal, and a healthy fear of YAML.",
+  },
+  {
+    label: "Game Dev Ambition",
+    value: 40,
+    flavor: "Godot 4, rising fast. Ask about Aletheia.",
+  },
 ];
 ---
 
 <Layout title="Character Sheet">
-    <section class="hero">
-        <p class="eyebrow">CHARACTER SHEET</p>
-        <h1>Charalampos "Chari" Makris</h1>
-        <p class="class-line">
-            Full-Stack Developer &middot; Indie Game Maker <span
-                class="class-status">(in progress)</span
-            >
-        </p>
-        <p class="tagline">
-            I build maritime platforms for a living and mythology-driven mystery
-            games for the version of me that gets to quit doing that.
-        </p>
-        <div class="cta-row">
-            <a class="btn btn-primary" href="/quests">View Quest Board</a>
-            <a class="btn btn-secondary" href="/aletheia">See the Main Quest</a>
-        </div>
-    </section>
+  <section class="hero">
+    <p class="eyebrow">CHARACTER SHEET</p>
+    <h1>Charalampos "Chari" Makris</h1>
+    <p class="class-line">
+      Full-Stack Developer &middot; Indie Game Maker <span class="class-status"
+        >(in progress)</span
+      >
+    </p>
+    <p class="tagline">
+      I build maritime platforms for a living and mythology-driven mystery games
+      for the version of me that gets to quit doing that.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="/quests">View Quest Board</a>
+      <a class="btn btn-secondary" href="/aletheia">See the Main Quest</a>
+    </div>
+  </section>
 
-    <section class="stats-section" aria-labelledby="stats-heading">
-        <h2 id="stats-heading">Stats</h2>
-        <div class="stats-grid">
-            {stats.map((stat) => <StatBlock {...stat} />)}
-        </div>
-    </section>
+  <section class="stats-section" aria-labelledby="stats-heading">
+    <h2 id="stats-heading">Stats</h2>
+    <div class="stats-grid">
+      {stats.map((stat) => <StatBlock {...stat} />)}
+    </div>
+  </section>
 </Layout>
 
 <style>
-    .hero {
-        padding: var(--space-12) 0;
-    }
+  .hero {
+    padding: var(--space-12) 0;
+  }
 
-    .eyebrow {
-        font-family: var(--font-display);
-        font-size: var(--font-size-xs);
-        color: var(--color-accent);
-        letter-spacing: 0.1em;
-        margin: 0 0 var(--space-4);
-    }
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: var(--font-size-xs);
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    margin: 0 0 var(--space-4);
+  }
 
-    h1 {
-        font-size: var(--font-size-xl);
-        margin: 0 0 var(--space-4);
-        color: var(--color-fg0);
-    }
+  h1 {
+    font-size: var(--font-size-xl);
+    margin: 0 0 var(--space-4);
+    color: var(--color-fg0);
+  }
 
-    .class-line {
-        font-size: var(--font-size-lg);
-        color: var(--color-text);
-        margin: 0 0 var(--space-4);
-    }
+  .class-line {
+    font-size: var(--font-size-lg);
+    color: var(--color-text);
+    margin: 0 0 var(--space-4);
+  }
 
-    .class-status {
-        color: var(--color-text-muted);
-        font-size: var(--font-size-sm);
-    }
+  .class-status {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+  }
 
-    .tagline {
-        max-width: 55ch;
-        color: var(--color-text-muted);
-        margin: 0 0 var(--space-8);
-    }
+  .tagline {
+    max-width: 55ch;
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-8);
+  }
 
-    .cta-row {
-        display: flex;
-        gap: var(--space-4);
-        flex-wrap: wrap;
-    }
+  .cta-row {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
 
-    .btn {
-        display: inline-block;
-        padding: var(--space-3) var(--space-6);
-        font-size: var(--font-size-sm);
-        text-decoration: none;
-        border-radius: var(--radius);
-        transition:
-            transform var(--transition),
-            background var(--transition);
-    }
+  .btn {
+    display: inline-block;
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+    border-radius: var(--radius);
+    transition:
+      transform var(--transition),
+      background var(--transition);
+  }
 
-    .btn:hover {
-        transform: translateY(-2px);
-    }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
 
-    .btn-primary {
-        background: var(--color-accent);
-        color: var(--color-bg0);
-    }
+  .btn-primary {
+    background: var(--color-accent);
+    color: var(--color-bg0);
+  }
 
-    .btn-secondary {
-        background: transparent;
-        color: var(--color-text);
-        border: 1px solid var(--color-border);
-    }
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
 
-    .stats-section {
-        padding: var(--space-8) 0;
-        border-top: 1px solid var(--color-border);
-    }
+  .stats-section {
+    padding: var(--space-8) 0;
+    border-top: 1px solid var(--color-border);
+  }
 
-    .stats-section h2 {
-        font-size: var(--font-size-base);
-        color: var(--color-fg0);
-        margin: 0 0 var(--space-6);
-    }
+  .stats-section h2 {
+    font-size: var(--font-size-base);
+    color: var(--color-fg0);
+    margin: 0 0 var(--space-6);
+  }
 
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: var(--space-6);
-    }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-6);
+  }
 </style>

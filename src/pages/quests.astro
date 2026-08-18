@@ -5,27 +5,27 @@ import PageHeader from "../components/PageHeader.astro";
 import QuestCard from "../components/QuestCard.astro";
 
 const quests = (await getCollection("quests")).sort(
-    (a, b) => a.data.order - b.data.order,
+  (a, b) => a.data.order - b.data.order,
 );
 ---
 
 <Layout title="Quest Board" description="Completed and in-progress projects.">
-    <PageHeader
-        eyebrow="QUEST BOARD"
-        title="Completed & active quests"
-        subtitle="Portfolio projects, each shipped solo, most of them in a single day."
-    />
+  <PageHeader
+    eyebrow="QUEST BOARD"
+    title="Completed & active quests"
+    subtitle="Portfolio projects, each shipped solo, most of them in a single day."
+  />
 
-    <div class="quest-grid">
-        {quests.map((quest) => <QuestCard {...quest.data} />)}
-    </div>
+  <div class="quest-grid">
+    {quests.map((quest) => <QuestCard {...quest.data} />)}
+  </div>
 </Layout>
 
 <style>
-    .quest-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: var(--space-6);
-        padding-bottom: var(--space-12);
-    }
+  .quest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+    padding-bottom: var(--space-12);
+  }
 </style>
