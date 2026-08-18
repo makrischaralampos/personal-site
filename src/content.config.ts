@@ -1,5 +1,6 @@
 import { glob } from "astro/loaders";
-import { defineCollection, z } from "astro:content";
+import { z } from "astro/zod";
+import { defineCollection } from "astro:content";
 
 const quests = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/quests" }),
@@ -8,8 +9,8 @@ const quests = defineCollection({
     status: z.enum(["Completed", "In Progress", "Planned"]),
     summary: z.string(),
     stack: z.array(z.string()),
-    githubUrl: z.string().url().optional(),
-    liveUrl: z.string().url().optional(),
+    githubUrl: z.url().optional(),
+    liveUrl: z.url().optional(),
     order: z.number().default(0),
   }),
 });
