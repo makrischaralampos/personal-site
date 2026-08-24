@@ -1,8 +1,8 @@
 {
   "title": "Mythmap",
+  "summary": "An interactive map of Greek myths and historical sites, surfacing location-based story fragments through a self-hostable, open-source full-stack architecture.",
   "status": "Completed",
-  "summary": "An interactive map of Greek mythology — click a region, surface the myths tied to it, rendered on a parchment-styled Leaflet map.",
-  "stack": ["Angular 21", "Spring Boot 4.1", "PostgreSQL 18", "Leaflet"],
+  "stack": ["SvelteKit", "PostgreSQL", "Leaflet"],
   "githubUrl": "https://github.com/makrischaralampos/mythmap",
-  "order": 2
+  "order": 4
 }

@@ -1,0 +1,8 @@
+{
+  "title": "Mythmap (Angular Rebuild)",
+  "status": "Completed",
+  "summary": "A full rebuild of Mythmap on Angular and Spring Boot — same interactive Greek mythology map, reimplemented top to bottom on a different stack.",
+  "stack": ["Angular", "Spring Boot", "PostgreSQL", "Leaflet"],
+  "githubUrl": "https://github.com/makrischaralampos/mythmap-rebuild",
+  "order": 5
+}
