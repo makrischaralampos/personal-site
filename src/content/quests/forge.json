@@ -1,0 +1,8 @@
+{
+  "title": "The Forge",
+  "status": "Completed",
+  "summary": "A self-hosted build-and-deploy dashboard for Godot export pipelines, with Prometheus metrics and a pre-provisioned Grafana dashboard.",
+  "stack": ["FastAPI", "Python", "Traefik", "Prometheus", "Grafana"],
+  "githubUrl": "https://github.com/makrischaralampos/forge",
+  "order": 2
+}

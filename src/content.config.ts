@@ -10,6 +10,7 @@ const quests = defineCollection({
     summary: z.string(),
     stack: z.array(z.string()),
     githubUrl: z.url().optional(),
+    gitlabUrl: z.url().optional(),
     liveUrl: z.url().optional(),
     order: z.number().default(0),
   }),

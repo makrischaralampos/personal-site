@@ -1,8 +1,9 @@
 {
   "title": "Mythmap",
-  "summary": "An interactive map of Greek myths and historical sites, surfacing location-based story fragments through a self-hostable, open-source full-stack architecture.",
+  "summary": "An interactive map of Greek myths and historical sites — click a marker, read the story fragments tied to that place and era.",
   "status": "Completed",
-  "stack": ["SvelteKit", "PostgreSQL", "Leaflet"],
+  "stack": ["SvelteKit", "TypeScript", "Drizzle ORM"],
   "githubUrl": "https://github.com/makrischaralampos/mythmap",
-  "order": 4
+  "liveUrl": "https://mythmap-mellow-night-5810.fly.dev/",
+  "order": 5
 }

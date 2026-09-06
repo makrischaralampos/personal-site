@@ -5,10 +5,11 @@ interface Props {
   summary: string;
   stack: string[];
   githubUrl?: string;
+  gitlabUrl?: string;
   liveUrl?: string;
 }
 
-const { title, status, summary, stack, githubUrl, liveUrl } = Astro.props;
+const { title, status, summary, stack, githubUrl, gitlabUrl, liveUrl } = Astro.props;
 
 const statusClass = {
   Completed: "status-completed",
@@ -27,20 +28,21 @@ const statusClass = {
     {stack.map((tech) => <li>{tech}</li>)}
   </ul>
   <div class="quest-links">
-    {
-      githubUrl && (
+    {githubUrl && (
         <a href={githubUrl} rel="noopener noreferrer" target="_blank">
-          Source →
+          Source (GitHub) →
         </a>
-      )
-    }
-    {
-      liveUrl && (
+      )}
+    {gitlabUrl && (
+    <a href={gitlabUrl} rel="noopener noreferrer" target="_blank">
+        Source (GitLab) →
+    </a>
+    )}
+    {liveUrl && (
         <a href={liveUrl} rel="noopener noreferrer" target="_blank">
           Live →
         </a>
-      )
-    }
+      )}
   </div>
 </article>
 

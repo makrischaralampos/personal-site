@@ -1,0 +1,8 @@
+{
+  "title": "Homelab Pulse",
+  "status": "Completed",
+  "summary": "A self-hosted network and connectivity monitor — a Go checker runs on a schedule in Kubernetes, testing reachability against real homelab devices and public endpoints.",
+  "stack": ["Go", "Kubernetes", "Docker", "GitLab CI/CD"],
+  "gitlabUrl": "https://gitlab.com/makrischaralampos11/homelab-pulse",
+  "order": 4
+}

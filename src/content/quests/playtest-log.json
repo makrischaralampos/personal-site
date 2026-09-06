@@ -1,0 +1,8 @@
+{
+  "title": "Playtest Log",
+  "status": "Completed",
+  "summary": "A self-hosted REST API for logging personal game playtest sessions — bugs, feedback, and reactions by build version, with no third-party analytics SDK.",
+  "stack": ["Java 25", "Spring Boot 4.1", "MySQL"],
+  "githubUrl": "https://github.com/makrischaralampos/playtest-log",
+  "order": 9
+}

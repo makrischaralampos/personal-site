@@ -1,0 +1,9 @@
+{
+  "title": "Palette Vault",
+  "status": "Completed",
+  "summary": "A tool for organizing and previewing pixel-art color palettes, with tag-based filtering and a live swatch grid — fully client-side, no ads or tracking.",
+  "stack": ["React", "TypeScript", "Vite"],
+  "githubUrl": "https://github.com/makrischaralampos/palette-vault",
+  "liveUrl": "https://paltte-vault-dkv9fbtbs-makrischaralampos-projects.vercel.app/",
+  "order": 8
+}
